@@ -151,7 +151,7 @@ async function loadSample(id) {
   if (!id) return;
   showSpinner(true);
   try {
-    const data = await api(`/api/samples/${encodeURIComponent(id)}`);
+    const data = await api(`/api/sample?id=${encodeURIComponent(id)}`);
     fillForm(data.patient);
     loadedSample = { id: data.id, true_diagnosis: data.true_diagnosis };
     $("sampleBanner").innerHTML = `Loaded <strong>${esc(data.id)}</strong> (true diagnosis: <strong>${esc(data.true_diagnosis)}</strong>). ` +

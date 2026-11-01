@@ -12,6 +12,7 @@ and fits easily on Vercel. Predictions are identical to the full CatBoost model.
 import csv
 import math
 from pathlib import Path
+from urllib.parse import unquote
 
 from flask import Flask, abort, jsonify, request, send_from_directory
 
@@ -116,11 +117,14 @@ def config():
     })
 
 
-@app.get("/api/samples/<sample_id>")
-def sample(sample_id):
+@app.get("/api/sample")                    # /api/sample?id=Patient%201  (used by the page)
+@app.get("/api/samples/<path:sample_id>")  # older style, kept for compatibility
+def sample(sample_id=None):
+    # Some hosts (e.g. Vercel) pass the path still URL-encoded ("Patient%201"), so decode it ourselves
+    sample_id = unquote(request.args.get("id") or sample_id or "").replace("+", " ").strip()
     row = next((r for r in samples if r["sample_id"] == sample_id), None)
     if row is None:
-        abort(404)
+        return jsonify({"error": f"Sample patient '{sample_id}' not found"}), 404
     return jsonify({"id": sample_id, "true_diagnosis": row["true_diagnosis"],
                     "patient": {f: sample_value(f, row.get(f)) for f in predictor.features}})
 
