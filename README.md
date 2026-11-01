@@ -1,4 +1,4 @@
-# 🩺 AppendiScope — AI Decision Support for Pediatric Appendicitis
+# 🩺 AppendixAi — AI Decision Support for Pediatric Appendicitis
 
 A research web app that estimates, for a child with abdominal pain:
 
