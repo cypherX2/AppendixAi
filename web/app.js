@@ -1,4 +1,4 @@
-// AppendiScope front end — talks to the Flask server through /api/... (no internet needed)
+// AppendixAi front end — talks to the Flask server through /api/... (no internet needed)
 "use strict";
 
 const UNKNOWN = "Unknown";
@@ -235,7 +235,7 @@ function downloadReport() {
   const pad = (n) => String(n).padStart(2, "0");
   const d = new Date();
   const lines = [
-    "AppendiScope — prediction report",
+    "AppendixAi — prediction report",
     `Generated: ${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`,
     "RESEARCH PROTOTYPE — NOT A MEDICAL DEVICE",
     "",
@@ -253,7 +253,7 @@ function downloadReport() {
   const blob = new Blob([lines.join("\n")], { type: "text/plain;charset=utf-8" });
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
-  a.download = "appendiscope_report.txt";
+  a.download = "appendixai_report.txt";
   a.click();
   URL.revokeObjectURL(a.href);
 }
@@ -279,7 +279,7 @@ async function init() {
     $("downloadBtn").addEventListener("click", downloadReport);
   } catch (err) {
     document.querySelector(".main").innerHTML =
-      `<div class="alert alert-error">Could not reach the AppendiScope server: ${esc(err.message)}<br>
+      `<div class="alert alert-error">Could not reach the AppendixAi server: ${esc(err.message)}<br>
        Start it with <code>python web_app.py</code> and reload this page.</div>`;
   } finally {
     showSpinner(false);

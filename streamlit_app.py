@@ -80,7 +80,7 @@ if key(predictor.features[0]) not in st.session_state:
 
 # ------------------------------------------------------------------ sidebar
 with st.sidebar:
-    st.title("🩺 AppendiScope")
+    st.title("🩺 AppendixAi")
     st.caption("AI decision support for pediatric appendicitis — research prototype")
     st.markdown("### Try a sample patient")
     st.selectbox("Real, anonymised patients the model has never seen",
@@ -183,7 +183,7 @@ with tab_predict:
                            "missing tests were informative in the training data.")
 
         report = [
-            "AppendiScope — prediction report",
+            "AppendixAi — prediction report",
             f"Generated: {datetime.now():%Y-%m-%d %H:%M}",
             "RESEARCH PROTOTYPE — NOT A MEDICAL DEVICE",
             "",
@@ -197,7 +197,7 @@ with tab_predict:
             "Inputs:",
             *[f"  {pretty(f)}: {'—' if v is None or v == UNKNOWN else v}" for f, v in res["patient"].items()],
         ]
-        st.download_button("⬇️ Download report", "\n".join(report), file_name="appendiscope_report.txt",
+        st.download_button("⬇️ Download report", "\n".join(report), file_name="appendixai_report.txt",
                            width="stretch")
 
 # ------------------------------------------------------------------ performance tab

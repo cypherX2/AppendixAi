@@ -1,4 +1,4 @@
-"""AppendiScope — HTML/CSS/JavaScript website served by Flask.
+"""AppendixAi — HTML/CSS/JavaScript website served by Flask.
 
 Run locally (works offline):   python web_app.py   then open http://localhost:5000
 
@@ -148,5 +148,5 @@ def predict():
 if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 5000))
-    print(f"AppendiScope is running - open http://localhost:{port}  (press Ctrl+C to stop)")
+    print(f"AppendixAi is running - open http://localhost:{port}  (press Ctrl+C to stop)")
     app.run(host="127.0.0.1", port=port, debug=False)

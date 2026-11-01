@@ -66,7 +66,7 @@ for t in cb["oblivious_trees"]:
                   "cover_ratio": ratio.round(10).tolist()})
 
 lite = {
-    "format": "appendiscope-lite-1",
+    "format": "appendixai-lite-1",
     "classes": info["classes"],
     "preprocessing": preprocessing,
     "scale_and_bias": cb["scale_and_bias"],
