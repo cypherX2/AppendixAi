@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AppendiScope — Pediatric Appendicitis AI</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="layout">
+
+  <!-- ============================== SIDEBAR ============================== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <h1>🩺 AppendiScope</h1>
+      <p class="muted">AI decision support for pediatric appendicitis — research prototype</p>
+    </div>
+
+    <h3>Try a sample patient</h3>
+    <label class="small muted" for="sampleSelect">Real, anonymised patients the model has never seen</label>
+    <select id="sampleSelect"><option value="">—</option></select>
+    <button class="btn btn-secondary" id="clearBtn" type="button">Clear form</button>
+
+    <hr>
+    <h3>Model</h3>
+    <p><strong id="modelName">…</strong> · <span id="nFeatures">…</span> inputs</p>
+    <div class="tiles">
+      <div class="tile"><span class="tile-label">Test accuracy</span><span class="tile-value" id="mAcc">–</span></div>
+      <div class="tile"><span class="tile-label">ROC-AUC</span><span class="tile-value" id="mAuc">–</span></div>
+      <div class="tile"><span class="tile-label">Appendicitis sens.</span><span class="tile-value" id="mSensApp">–</span></div>
+      <div class="tile"><span class="tile-label">Complicated sens.</span><span class="tile-value" id="mSensComp">–</span></div>
+    </div>
+
+    <hr>
+    <div class="alert alert-warning">⚠️ Research prototype — <strong>not a medical device</strong>. Never use it to make clinical decisions.</div>
+  </aside>
+
+  <!-- ============================== MAIN ============================== -->
+  <main class="main">
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-tab="assess" role="tab">🔍 Patient assessment</button>
+      <button class="tab" data-tab="perf" role="tab">📊 Model performance</button>
+      <button class="tab" data-tab="about" role="tab">ℹ️ About</button>
+    </nav>
+
+    <!-- ---------- Assessment tab ---------- -->
+    <section class="panel active" id="tab-assess">
+      <h2>Patient assessment</h2>
+      <p class="muted">Fill in what you know — every field is optional. Pick a sample patient in the sidebar to try it quickly.</p>
+      <div id="sampleBanner" class="alert alert-info hidden"></div>
+
+      <form id="patientForm" novalidate>
+        <div id="formSections"></div>
+        <button class="btn btn-primary btn-wide" type="submit" id="predictBtn">🔍 Predict</button>
+      </form>
+
+      <div id="results" class="hidden">
+        <hr>
+        <h2>Result</h2>
+        <div id="warnings"></div>
+        <div class="cards">
+          <div class="card"><span class="card-label">Diagnosis</span><span class="card-value" id="rDiag"></span><span class="pill" id="rDiagSub"></span></div>
+          <div class="card"><span class="card-label">Most likely class</span><span class="card-value" id="rClass"></span><span class="pill" id="rClassSub"></span></div>
+          <div class="card"><span class="card-label">Complicated / perforation risk</span><span class="card-value" id="rRisk"></span><span class="pill" id="rRiskSub"></span></div>
+        </div>
+        <div id="rMessage" class="alert"></div>
+        <div id="rCheck" class="alert hidden"></div>
+
+        <div class="two-col">
+          <div>
+            <h4>Probability of each class</h4>
+            <div id="probBars" class="bars"></div>
+          </div>
+          <div>
+            <h4 id="factorsTitle">Why?</h4>
+            <table class="table">
+              <thead><tr><th>Feature</th><th>Value</th><th>Direction</th><th class="num">Effect</th></tr></thead>
+              <tbody id="factorsBody"></tbody>
+            </table>
+            <p class="small muted">SHAP contributions from the CatBoost model. ‘missing’ can matter because missing tests were informative in the training data.</p>
+          </div>
+        </div>
+        <button class="btn btn-secondary btn-wide" id="downloadBtn" type="button">⬇️ Download report</button>
+      </div>
+    </section>
+
+    <!-- ---------- Performance tab ---------- -->
+    <section class="panel" id="tab-perf">
+      <h2>Model performance</h2>
+      <p class="muted" id="perfCaption"></p>
+      <table class="table metrics-table"><thead><tr><th>Metric</th><th class="num">Test set</th></tr></thead><tbody id="metricsBody"></tbody></table>
+      <div class="gallery" id="gallery"></div>
+    </section>
+
+    <!-- ---------- About tab ---------- -->
+    <section class="panel" id="tab-about">
+      <h2>About this project</h2>
+      <div id="aboutText"></div>
+    </section>
+  </main>
+</div>
+
+<!-- Enlarged figure viewer -->
+<div class="lightbox hidden" id="lightbox"><img alt="" id="lightboxImg"><p id="lightboxCaption"></p></div>
+<div class="spinner hidden" id="spinner"><div></div></div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

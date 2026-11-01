@@ -24,7 +24,13 @@ blood/urine tests, structured ultrasound report).
 
 ```
 appendicitis-ai/
-├── streamlit_app.py          ← Frontend: the website (form, results, charts)
+├── streamlit_app.py          ← Website version 1: Streamlit
+├── web_app.py                ← Website version 2: Flask server for the HTML/CSS/JS site
+├── web/
+│   ├── index.html            ← page structure
+│   ├── style.css             ← design
+│   └── app.js                ← behaviour (form, samples, results, report download)
+├── predict.py                ← predictions from the command line (no website)
 ├── backend/
 │   └── predictor.py          ← Backend: loads the model, validates input, predicts, explains
 ├── model/
@@ -40,10 +46,32 @@ appendicitis-ai/
 ## Run on your computer
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements-full.txt
+```
+
+- `requirements.txt` → only Flask + NumPy: what the website needs (used by Vercel).
+- `requirements-full.txt` → everything (Streamlit, CatBoost, notebooks, retraining).
+
+**HTML/CSS/JavaScript website** (works fully offline):
+```bash
+python web_app.py
+```
+Then open http://localhost:5000.
+
+**Streamlit website:**
+```bash
 streamlit run streamlit_app.py
 ```
 Then open http://localhost:8501.
+
+Both websites use the same model and give identical predictions.
+
+## Deploy on Vercel
+
+The HTML website deploys to Vercel as a Flask app (`app.py`). The model is exported to
+`model/lite_model.json` and run with NumPy only (`backend/lite.py`), so the deployment is ~80 MB
+instead of >500 MB. Predictions and explanations match the original CatBoost model exactly.
+After retraining, re-export with `python tools/export_lite_model.py`.
 
 ## Dataset
 

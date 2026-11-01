@@ -1,0 +1,10 @@
+# Not needed by the website on Vercel (keeps the upload small)
+notebooks/
+tools/
+streamlit_app.py
+.streamlit/
+predict.py
+backend/predictor.py
+model/appendicitis_model.joblib
+requirements-full.txt
+__pycache__/
