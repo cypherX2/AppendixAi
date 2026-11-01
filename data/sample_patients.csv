@@ -1,0 +1,10 @@
+sample_id,true_diagnosis,Age,BMI,Sex,Height,Weight,Appendix_on_US,Appendix_Diameter,Migratory_Pain,Lower_Right_Abd_Pain,Contralateral_Rebound_Tenderness,Coughing_Pain,Nausea,Loss_of_Appetite,Body_Temperature,WBC_Count,Neutrophil_Percentage,Neutrophilia,RBC_Count,Hemoglobin,RDW,Thrombocyte_Count,Ketones_in_Urine,RBC_in_Urine,WBC_in_Urine,CRP,Dysuria,Stool,Peritonitis,Psoas_Sign,Ipsilateral_Rebound_Tenderness,US_Performed,Free_Fluids
+Patient 1,Complicated,6.25,14.863258026159334,female,116.0,20.0,yes,9.0,no,yes,yes,yes,yes,yes,37.1,15.3,79.2,yes,4.5,12.8,12.3,341.0,,,,34.0,,,no,yes,,no,
+Patient 2,Complicated,9.26,14.06,male,138.6,27.0,yes,12.0,no,yes,no,no,no,yes,38.0,19.0,91.2,yes,5.24,14.8,12.6,291.0,+++,no,no,20.0,no,normal,local,yes,yes,yes,
+Patient 3,Complicated,11.63,16.34,female,154.5,39.0,no,,no,yes,yes,yes,yes,yes,37.8,20.0,,,,,,,,,,43.0,no,normal,local,yes,,yes,yes
+Patient 4,Uncomplicated,5.0321697467488,14.5179584120983,male,115.0,19.2,yes,6.0,no,yes,no,no,no,no,40.0,13.7,,yes,4.79,12.8,14.4,231.0,,,,15.0,no,diarrhea,no,no,no,yes,no
+Patient 5,Uncomplicated,13.83,17.3,female,170.0,50.0,no,,no,yes,yes,,no,no,37.1,5.5,57.0,no,4.16,12.6,12.2,336.0,no,+++,no,1.0,,normal,generalized,yes,,yes,no
+Patient 6,Uncomplicated,8.01368925393566,15.2378533674069,male,125.5,24.0,yes,8.0,no,yes,no,yes,no,no,37.0,7.4,65.4,no,4.87,13.2,12.3,353.0,,,,15.0,no,normal,no,no,,yes,yes
+Patient 7,No appendicitis,6.76,15.5,female,122.0,22.9,yes,5.0,yes,yes,no,yes,no,no,37.4,19.7,75.5,yes,4.77,13.4,12.2,330.0,,,,1.0,no,normal,no,no,yes,yes,yes
+Patient 8,No appendicitis,10.7186858316222,20.5049339997437,male,153.0,48.0,no,,no,yes,yes,yes,no,no,38.8,11.4,54.0,no,5.23,13.8,13.5,276.0,,,,1.0,no,normal,no,yes,no,yes,no
+Patient 9,No appendicitis,9.3305954825462,15.3787004998078,female,127.5,25.0,yes,5.0,no,yes,no,no,no,yes,36.4,7.6,54.1,no,5.09,15.0,11.9,302.0,no,no,no,0.0,no,normal,no,yes,no,yes,yes

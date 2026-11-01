@@ -1,0 +1,217 @@
+{
+  "model_name": "CatBoost",
+  "classes": [
+    "No appendicitis",
+    "Uncomplicated",
+    "Complicated"
+  ],
+  "features": [
+    "Age",
+    "BMI",
+    "Sex",
+    "Height",
+    "Weight",
+    "Appendix_on_US",
+    "Appendix_Diameter",
+    "Migratory_Pain",
+    "Lower_Right_Abd_Pain",
+    "Contralateral_Rebound_Tenderness",
+    "Coughing_Pain",
+    "Nausea",
+    "Loss_of_Appetite",
+    "Body_Temperature",
+    "WBC_Count",
+    "Neutrophil_Percentage",
+    "Neutrophilia",
+    "RBC_Count",
+    "Hemoglobin",
+    "RDW",
+    "Thrombocyte_Count",
+    "Ketones_in_Urine",
+    "RBC_in_Urine",
+    "WBC_in_Urine",
+    "CRP",
+    "Dysuria",
+    "Stool",
+    "Peritonitis",
+    "Psoas_Sign",
+    "Ipsilateral_Rebound_Tenderness",
+    "US_Performed",
+    "Free_Fluids"
+  ],
+  "numeric_features": {
+    "Age": {
+      "min": 0.0,
+      "max": 18.36,
+      "median": 11.437371663244349
+    },
+    "BMI": {
+      "min": 7.82798256044392,
+      "max": 38.1562212183676,
+      "median": 18.044120557824698
+    },
+    "Height": {
+      "min": 53.0,
+      "max": 192.0,
+      "median": 149.5
+    },
+    "Weight": {
+      "min": 3.96,
+      "max": 103.0,
+      "median": 41.3
+    },
+    "Appendix_Diameter": {
+      "min": 2.7,
+      "max": 17.0,
+      "median": 7.5
+    },
+    "Body_Temperature": {
+      "min": 26.9,
+      "max": 40.2,
+      "median": 37.2
+    },
+    "WBC_Count": {
+      "min": 2.6,
+      "max": 37.7,
+      "median": 12.0
+    },
+    "Neutrophil_Percentage": {
+      "min": 27.2,
+      "max": 97.7,
+      "median": 75.5
+    },
+    "RBC_Count": {
+      "min": 3.62,
+      "max": 14.0,
+      "median": 4.78
+    },
+    "Hemoglobin": {
+      "min": 8.2,
+      "max": 36.0,
+      "median": 13.3
+    },
+    "RDW": {
+      "min": 11.2,
+      "max": 86.9,
+      "median": 12.7
+    },
+    "Thrombocyte_Count": {
+      "min": 91.0,
+      "max": 708.0,
+      "median": 276.0
+    },
+    "CRP": {
+      "min": 0.0,
+      "max": 365.0,
+      "median": 7.0
+    }
+  },
+  "categorical_features": {
+    "Sex": [
+      "female",
+      "male"
+    ],
+    "Appendix_on_US": [
+      "no",
+      "yes"
+    ],
+    "Migratory_Pain": [
+      "no",
+      "yes"
+    ],
+    "Lower_Right_Abd_Pain": [
+      "no",
+      "yes"
+    ],
+    "Contralateral_Rebound_Tenderness": [
+      "no",
+      "yes"
+    ],
+    "Coughing_Pain": [
+      "no",
+      "yes"
+    ],
+    "Nausea": [
+      "no",
+      "yes"
+    ],
+    "Loss_of_Appetite": [
+      "no",
+      "yes"
+    ],
+    "Neutrophilia": [
+      "no",
+      "yes"
+    ],
+    "Ketones_in_Urine": [
+      "+",
+      "++",
+      "+++",
+      "no"
+    ],
+    "RBC_in_Urine": [
+      "+",
+      "++",
+      "+++",
+      "no"
+    ],
+    "WBC_in_Urine": [
+      "+",
+      "++",
+      "+++",
+      "no"
+    ],
+    "Dysuria": [
+      "no",
+      "yes"
+    ],
+    "Stool": [
+      "constipation",
+      "constipation, diarrhea",
+      "diarrhea",
+      "normal"
+    ],
+    "Peritonitis": [
+      "generalized",
+      "local",
+      "no"
+    ],
+    "Psoas_Sign": [
+      "no",
+      "yes"
+    ],
+    "Ipsilateral_Rebound_Tenderness": [
+      "no",
+      "yes"
+    ],
+    "US_Performed": [
+      "no",
+      "yes"
+    ],
+    "Free_Fluids": [
+      "no",
+      "yes"
+    ]
+  },
+  "test_metrics": {
+    "Accuracy": 0.859,
+    "Balanced accuracy": 0.8004,
+    "Macro precision": 0.8435,
+    "Macro recall": 0.8004,
+    "Macro F1": 0.8163,
+    "Weighted F1": 0.8556,
+    "Macro ROC-AUC (OvR)": 0.9396,
+    "Appendicitis sensitivity": 0.957,
+    "Appendicitis specificity": 0.9048,
+    "Complicated sensitivity": 0.5833,
+    "Complicated specificity": 0.9697
+  },
+  "test_accuracy_95ci": [
+    0.8013,
+    0.9103
+  ],
+  "cv_accuracy": 0.8248,
+  "trained_on_patients": 624,
+  "disclaimer": "Research prototype. Not a medical device. Predictions must not replace clinical judgement.",
+  "training_note": "Trained on the 624 training patients only; the 156 test patients (including the website's sample patients) were never seen during training."
+}
